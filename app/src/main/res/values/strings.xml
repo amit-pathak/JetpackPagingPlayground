@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JetpackPagingPlayground</string>
+    <string name="label_characters_list">Popular Characters</string>
 </resources>
