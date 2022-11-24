@@ -7,7 +7,7 @@ import androidx.paging.PagingState
 import com.playground.paging.domain.contract.Page
 import com.playground.paging.domain.response.PageItem
 
-class SFBasePagingSource<T : PageItem>(
+class BasePagingSource<T : PageItem>(
     private val block: suspend (Int) -> Page<T>
 ) : PagingSource<Int, T>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, T> {
@@ -44,5 +44,5 @@ fun <T : PageItem> createPager(
     block: suspend (Int) -> Page<T>
 ): Pager<Int, T> = Pager(
     config = PagingConfig(enablePlaceholders = enablePlaceholders, pageSize = pageSize),
-    pagingSourceFactory = { SFBasePagingSource(block) }
+    pagingSourceFactory = { BasePagingSource(block) }
 )
